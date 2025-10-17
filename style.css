@@ -110,3 +110,58 @@ body {
   cursor: not-allowed;
   opacity: 0.6;
 }
+
+
+/* Chat Messages Area Styling */
+.chat-messages-area {
+  /* This allows the area to take up all the vertical space between the header and the chatbar */
+  flex-grow: 1; 
+  width: 90%; 
+  max-width: 800px; /* Crucial: Keeps the content centered and readable */
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 20px 0;
+  overflow-y: auto; /* Adds a scrollbar if messages fill the screen */
+}
+
+/* 5. Individual Message Styling */
+
+/* Message Container: Aligns the whole bubble to the right or left */
+.message-container {
+    display: flex;
+    margin-bottom: 15px;
+    /* Use a default alignment that can be overridden */
+    justify-content: flex-start; 
+}
+
+/* User Message: Aligns the message bubble to the right */
+.user-message {
+    justify-content: flex-end; 
+}
+
+/* The actual bubble that holds the text */
+.message-bubble {
+    /* Standard appearance for all messages */
+    padding: 12px 18px;
+    border-radius: 20px;
+    max-width: 80%; /* Messages shouldn't always stretch the full width */
+    font-size: 1rem;
+    line-height: 1.5;
+    word-wrap: break-word;
+}
+
+/* AI Message Appearance */
+/* We'll use a slightly lighter dark color for the AI bubble */
+.ai-message .message-bubble {
+    background-color: #383838; /* Lighter grey for AI */
+    color: #f0f0f0;
+    border-bottom-left-radius: 5px; /* Gives it a slight angular look at the bottom corner */
+}
+
+/* User Message Appearance */
+/* We'll use the same dark color as the chatbar for the user bubble */
+.user-message .message-bubble {
+    background-color: #2b2b2b; /* Dark grey for User */
+    color: #ffffff;
+    border: 1px solid #444; /* Subtle border */
+    border-bottom-right-radius: 5px; /* Slight angular look */
+}

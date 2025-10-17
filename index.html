@@ -18,7 +18,11 @@
   </header>
 
   <div class="chat-messages-area">
-
+      <div class="message-container user-message">
+        <div class="message-bubble">
+          This is my test message sent from the input field!
+        </div>
+      </div>
   </div>
 
   <div class="chatbar-container">
@@ -31,56 +35,8 @@
   
   </div>
 
-  <script>
-    const input = document.getElementById('chat-input');
-    const button = document.getElementById('send-button');
+  <script src="https://cdn.jsdelivr.net/npm/@google/genai@0.1.0/dist/index.min.js"></script>
 
-    // --- Core Functionality ---
-
-    // 1. Initial State
-    button.disabled = true;
-
-    // 2. Input Event Listener (Handles Auto-Resize and Button State)
-    input.addEventListener('input' , () => {
-        // Auto-Resize Logic: Reset height, then set to scrollHeight
-        input.style.height = 'auto';
-        input.style.height = input.scrollHeight + 'px';
-
-        // Button Disable Logic: Enable only if there's non-whitespace content
-        const hasContent = input.value.trim().length > 0;
-        button.disabled = !hasContent;
-
-    });
-
-    // 3. Keydown Event Listener (Handles Enter-to-Send)
-      input.addEventListener('keydown', (event) => {
-        // Check if the Enter key was pressed AND the Shift key was NOT pressed 
-        if(event.key === 'Enter' && !event.shiftKey){
-          event.preventDefault(); // <-- THIS IS CRUCIAL: Prevents the default "new line" behavior
-
-          if(!button.disabled){
-            sendMessage(); // Call the send function if the button is active
-          }
-        }
-      });
-
-      // 4. Click Event Listener (Handles Mouse Clicks)
-      button.addEventListener('click', sendMessage);
-
-      // ---Send Message Function ---
-      function sendMessage(){
-        const message = input.value.trim();
-        if (message){
-          console.log('Message sent:', message);
-
-          // Post-send clean up
-          input.value = '';
-          input.style.height = "auto"; // Reset the textarea height
-          button.disabled = true; // Disable the button again
-        }
-      }
-
-  </script>
-
+  <script src="app.js"></script>
 </body>
 </html>
